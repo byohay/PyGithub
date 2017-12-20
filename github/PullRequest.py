@@ -457,7 +457,7 @@ class PullRequest(github.GithubObject.CompletableGithubObject):
             github.PullRequestComment.PullRequestComment,
             self._requester,
             self.url + "/reviews/" + str(id) + "/comments",
-            None
+            headers={'Accept': 'application/vnd.github.v3.diff'}
         )
 
     def get_commits(self):
@@ -548,7 +548,7 @@ class PullRequest(github.GithubObject.CompletableGithubObject):
             None,
             headers={'Accept': 'application/vnd.github.black-cat-preview+json'}
         )
-        
+
     def is_merged(self):
         """
         :calls: `GET /repos/:owner/:repo/pulls/:number/merge <http://developer.github.com/v3/pulls>`_
